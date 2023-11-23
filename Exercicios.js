@@ -34,22 +34,27 @@ console.log(result);
 //Desafio 02
 function deposito(saldo, valor) {
   saldo += valor;
-  console.log(Depósito de ${valor} realizado. Novo saldo: ${saldo});
+  alert(Depósito de ${valor} realizado. Novo saldo: ${saldo});
   return saldo;
 }
 
 function saque(saldo, valor) {
+try {
   if (valor > saldo) {
-    console.log("Saldo insuficiente.");
+    throw new Error("Saldo insuficiente.");
   } else {
     saldo -= valor;
-    console.log(Saque de ${valor} realizado. Novo saldo: ${saldo});
-  }
+    alert(Saque de ${valor} realizado. Novo saldo: ${saldo});
+    }
+    return saldo;
+  } catch (error) {
+  alert(Ocorreu um erro ao processar o saque: ${error.message} Saldo atual: ${saldo});
   return saldo;
+    }
 }
 
 function consultarSaldo(saldo) {
-  console.log(Saldo atual: ${saldo});
+  alert(Saldo atual: ${saldo});
 }
 
 function aplicacaoBancaria() {
@@ -84,7 +89,6 @@ function aplicacaoBancaria() {
 }
 
 aplicacaoBancaria();
-
 //Desafio 03
 function criarTabuleiro() {
   return Array(9).fill(null);
@@ -125,6 +129,9 @@ function jogar() {
   let jogoAtivo = true;
 
   function status() {
+    alert(`${tabuleiro[0] ?? '1'} | ${tabuleiro[1] ?? '2'} | ${tabuleiro[2] ?? '3'} 
+    ${tabuleiro[3] ?? '4'} | ${tabuleiro[4] ?? '5'} | ${tabuleiro[5] ?? '6'} |
+    ${tabuleiro[6] ?? '7'} | ${tabuleiro[7] ?? '8'} | ${tabuleiro[8] ?? '9'} |`);
     console.log(
       tabuleiro[0] || " ",
       "|",
